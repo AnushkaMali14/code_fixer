@@ -44,12 +44,12 @@ https://github.com/AnushkaMali14/code_fixer
 ### Backend Setup
 1. `cd backend`
 2. `npm install`
-3. `npm start` (Runs on http://localhost:5000)
+3. `npm start` 
 
 ### Frontend Setup
 1. `cd frontend`
 2. `npm install`
-3. `npm run dev` (Runs on http://localhost:5173)
+3. `npm run dev` 
 
 --------------------------------------------------
 ## 📌 License
