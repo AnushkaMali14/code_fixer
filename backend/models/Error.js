@@ -5,18 +5,22 @@ const errorSchema = new mongoose.Schema({
         type: String,
         required: true
     },
-    meaning: {
-        type: String,
-        required: true
-    },
-    cause: {
-        type: String,
-        required: true
-    },
-    solution: {
-        type: String,
-        required: true
-    },
+    // Standard fields made optional for backward compatibility
+    meaning: { type: String },
+    cause: { type: String },
+    solution: { type: String },
+    
+    // NEW: Structured Issues Array
+    issues: [{
+        title: String,
+        line: Number,
+        type: { type: String, enum: ['Error', 'Warning', 'Optimization'], default: 'Error' },
+        meaning: String,
+        cause: String,
+        recommendation: String,
+        fix: String
+    }],
+    
     fixCode: {
         type: String,
         required: true

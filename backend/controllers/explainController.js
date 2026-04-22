@@ -11,11 +11,13 @@ let inMemoryStats = {
 };
 
 export const explainError = async (req, res) => {
-    console.log(`[BACKEND] Received ${req.body.mode} analysis request for: "${req.body.query.substring(0, 50)}..."`);
-    
     try {
-        const { query, mode } = req.body;
-        const analysis = getSimulationResponse(query);
+        const errorInput = req.body.error || req.body.query;
+        const { mode } = req.body;
+        
+        console.log(`[BACKEND] Received Error: "${errorInput}"`);
+        
+        const analysis = getSimulationResponse(errorInput);
         
         // Log the generated analysis
         console.log(`[BACKEND] Analysis generated successfully for language: ${analysis.language}`);
@@ -62,13 +64,19 @@ export const explainError = async (req, res) => {
             console.warn(`[BACKEND] DB Stats update failed (using in-memory): ${e.message}`);
         }
         
+        // STEP 2: FORCE FIX VALUE (SAFETY)
+        if (!analysis.fix) {
+            analysis.fix = "Before:\n// error code\n\nAfter:\n// corrected code";
+        }
+        
         console.log(`[BACKEND] Sending success response to client. Points earned: ${pointsEarned}`);
         res.status(200).json({
             success: true,
-            data: analysis,
-            pointsEarned,
-            newTotalPoints: inMemoryStats.totalPoints,
-            level: inMemoryStats.level
+            data: {
+                ...analysis,
+                points: pointsEarned,
+                level: inMemoryStats.level
+            }
         });
         
     } catch (error) {

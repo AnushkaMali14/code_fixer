@@ -5,12 +5,45 @@ import { motion } from 'framer-motion';
 
 const Home = () => {
     const [query, setQuery] = useState('');
+    const [isLoading, setIsLoading] = useState(false);
     const navigate = useNavigate();
 
-    const handleExplain = (e) => {
+    const handleExplain = async (e) => {
         e.preventDefault();
-        if (query.trim()) {
-            navigate('/explain', { state: { query } });
+        if (!query.trim() || isLoading) return;
+
+        // 1. CLEAR OLD DATA
+        localStorage.removeItem('errorResult');
+        setIsLoading(true);
+        console.log(`[HOME] User Input: ${query}`);
+
+        try {
+            const response = await fetch('http://127.0.0.1:5000/api/explain-error', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({ 
+                    error: query,
+                    mode: 'error' 
+                })
+            });
+
+            const data = await response.json();
+            console.log("API DATA:", data);
+
+            if (data && data.success) {
+                // STEP 3: FRONTEND STORAGE
+                localStorage.setItem('errorResult', JSON.stringify(data.data));
+
+                // Navigate WITHOUT state
+                navigate('/explain');
+            } else {
+                alert(data.message || 'Failed to explain error');
+            }
+        } catch (error) {
+            console.error('[HOME ERROR]', error);
+            alert('Server connection error. Please ensure the backend is running.');
+        } finally {
+            setIsLoading(false);
         }
     };
 
@@ -64,9 +97,19 @@ const Home = () => {
                                 className="w-full py-6 px-6 bg-transparent text-lg outline-none text-gray-900 dark:text-white placeholder-gray-400"
                             />
                             <div className="pr-4">
-                                <button type="submit" className="btn-primary flex items-center space-x-2 py-4">
-                                    <Zap size={18} />
-                                    <span>Explain Error</span>
+                                <button 
+                                    type="submit" 
+                                    disabled={isLoading || !query.trim()}
+                                    className="btn-primary flex items-center space-x-2 py-4 min-w-[160px] justify-center"
+                                >
+                                    {isLoading ? (
+                                        <div className="w-5 h-5 border-2 border-white/30 border-t-white rounded-full animate-spin" />
+                                    ) : (
+                                        <>
+                                            <Zap size={18} />
+                                            <span>Explain Error</span>
+                                        </>
+                                    )}
                                 </button>
                             </div>
                         </div>

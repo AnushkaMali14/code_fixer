@@ -13,7 +13,7 @@ const mockLibrary = [
         meaning: "The array you are trying to iterate over doesn't exist yet.",
         cause: "Async data fetching or uninitialized state.",
         solution: "Use optional chaining (?.) or provide a default value [].",
-        fixCode: "data?.map(item => <div key={item.id}>{item.name}</div>)"
+        fix: "data?.map(item => <div key={item.id}>{item.name}</div>)"
     },
     {
         id: 2,
@@ -23,7 +23,7 @@ const mockLibrary = [
         meaning: "The variable hasn't been created in the current scope.",
         cause: "Missing 'let/const' or typo in variable name.",
         solution: "Declare the variable before usage.",
-        fixCode: "const x = 'hello';\nconsole.log(x);"
+        fix: "const x = 'hello';\nconsole.log(x);"
     },
     {
         id: 3,
@@ -33,7 +33,7 @@ const mockLibrary = [
         meaning: "The structure of the code is broken due to spacing.",
         cause: "Missing indentation after a colon (:).",
         solution: "Add 4 spaces or a tab after function/loop declarations.",
-        fixCode: "def greet():\n    print('Hello World')"
+        fix: "def greet():\n    print('Hello World')"
     },
     {
         id: 4,
@@ -43,7 +43,7 @@ const mockLibrary = [
         meaning: "The engine found characters it didn't expect.",
         cause: "Missing brackets, commas, or semicolons.",
         solution: "Check the console for the specific line and fix the syntax.",
-        fixCode: "if (true) {\n  console.log('Fixed');\n}"
+        fix: "if (true) {\n  console.log('Fixed');\n}"
     },
     {
         id: 5,
@@ -53,7 +53,7 @@ const mockLibrary = [
         meaning: "The index you requested is higher than the list length.",
         cause: "Looping past the end or accessing empty list.",
         solution: "Check list length with len() before accessing index.",
-        fixCode: "my_list = [1, 2]\nif len(my_list) > 2:\n    print(my_list[2])"
+        fix: "my_list = [1, 2]\nif len(my_list) > 2:\n    print(my_list[2])"
     }
 ];
 
@@ -183,7 +183,7 @@ const Library = () => {
                                              <h4 className="text-sm font-bold text-gray-400 uppercase tracking-widest mb-3">Fix Example</h4>
                                              <div className="rounded-2xl overflow-hidden border border-gray-200 dark:border-gray-800">
                                                 <SyntaxHighlighter language={selectedError.category.toLowerCase()} style={atomDark} customStyle={{ padding: '24px', margin: 0 }}>
-                                                    {selectedError.fixCode}
+                                                    {selectedError.fix}
                                                 </SyntaxHighlighter>
                                              </div>
                                              <button className="w-full mt-6 btn-primary flex items-center justify-center space-x-2">
