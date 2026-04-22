@@ -1,6 +1,10 @@
 # Code Fixers - Intelligent Code Analyzer
 
 --------------------------------------------------
+## 🔗 Project Link
+https://github.com/AnushkaMali14/code_fixer
+
+--------------------------------------------------
 ## 📌 Project Description
 Code Fixers is an AI-powered code analysis platform designed to detect complex logical errors in source code. It goes beyond simple syntax checking by simulating code execution paths to identify loop accumulation bugs, uninitialized variables, and unsafe array mappings. The project's main purpose is to help developers write safer, more optimized code by providing both an intelligent root-cause analysis and a ready-to-use optimized fix.
 
