@@ -6,19 +6,21 @@ import axios from 'axios';
 const Dashboard = () => {
     const [stats, setStats] = useState(null);
     const [loading, setLoading] = useState(true);
+    const [isBackendWaking, setIsBackendWaking] = useState(false);
 
     useEffect(() => {
         fetchStats();
     }, []);
 
     const fetchStats = async () => {
+        // Show waking message after 3 seconds if still loading
+        const wakingTimer = setTimeout(() => setIsBackendWaking(true), 3000);
         try {
             const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
-            const response = await axios.get(`${API_URL}/api/stats`);
+            const response = await axios.get(`${API_URL}/api/stats`, { timeout: 8000 });
             setStats(response.data.data);
         } catch (error) {
-            console.error('Failed to fetch stats');
-            // Set default stats so dashboard renders instead of blank screen
+            console.error('Failed to fetch stats - using defaults');
             setStats({
                 totalPoints: 0,
                 errorsExplained: 0,
@@ -28,11 +30,21 @@ const Dashboard = () => {
                 lastActivity: new Date()
             });
         } finally {
+            clearTimeout(wakingTimer);
+            setIsBackendWaking(false);
             setLoading(false);
         }
     };
 
-    if (loading) return <div className="p-8 text-center">Loading your dashboard...</div>;
+    if (loading) return (
+        <div className="p-8 text-center">
+            <div className="w-8 h-8 border-2 border-[#6C63FF]/30 border-t-[#6C63FF] rounded-full animate-spin mx-auto mb-4" />
+            {isBackendWaking
+                ? <p className="text-gray-500 dark:text-gray-400">⏳ Waking up the server… this takes ~30s on first load.</p>
+                : <p className="text-gray-500 dark:text-gray-400">Loading your dashboard...</p>
+            }
+        </div>
+    );
 
     const calculateProgress = () => {
         if (!stats) return 0;
