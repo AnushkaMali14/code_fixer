@@ -13,10 +13,20 @@ const Dashboard = () => {
 
     const fetchStats = async () => {
         try {
-            const response = await axios.get('http://localhost:5000/api/stats');
+            const API_URL = import.meta.env.VITE_API_URL || 'http://localhost:5000';
+            const response = await axios.get(`${API_URL}/api/stats`);
             setStats(response.data.data);
         } catch (error) {
             console.error('Failed to fetch stats');
+            // Set default stats so dashboard renders instead of blank screen
+            setStats({
+                totalPoints: 0,
+                errorsExplained: 0,
+                codeAnalyses: 0,
+                examplesUsed: 0,
+                level: 'Beginner',
+                lastActivity: new Date()
+            });
         } finally {
             setLoading(false);
         }
