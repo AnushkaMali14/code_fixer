@@ -21,9 +21,9 @@ const Home = () => {
             const response = await fetch('http://127.0.0.1:5000/api/explain-error', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
-                body: JSON.stringify({
+                body: JSON.stringify({ 
                     error: query,
-                    mode: 'error'
+                    mode: 'error' 
                 })
             });
 
@@ -65,19 +65,19 @@ const Home = () => {
                         <Sparkles size={14} />
                         <span>AI-Powered Error Decoding</span>
                     </span>
-
+                    
                     <h1 className="text-5xl lg:text-7xl font-extrabold tracking-tight text-gray-900 dark:text-white mb-6">
                         Understand Your <span className="bg-clip-text text-transparent bg-gradient-to-r from-[#6C63FF] to-[#3B82F6]">Code Errors</span> <br />
                         Faster Than Ever.
                     </h1>
-
+                    
                     <p className="max-w-2xl mx-auto text-xl text-gray-600 dark:text-gray-400 mb-10">
                         Stop scratching your head. Paste your error message or code snippet and get a simple, clear explanation with a verified fix in seconds.
                     </p>
                 </motion.div>
 
                 {/* Search Box */}
-                <motion.div
+                <motion.div 
                     initial={{ opacity: 0, scale: 0.95 }}
                     animate={{ opacity: 1, scale: 1 }}
                     transition={{ duration: 0.5, delay: 0.2 }}
@@ -97,8 +97,8 @@ const Home = () => {
                                 className="w-full py-6 px-6 bg-transparent text-lg outline-none text-gray-900 dark:text-white placeholder-gray-400"
                             />
                             <div className="pr-4">
-                                <button
-                                    type="submit"
+                                <button 
+                                    type="submit" 
                                     disabled={isLoading || !query.trim()}
                                     className="btn-primary flex items-center space-x-2 py-4 min-w-[160px] justify-center"
                                 >
