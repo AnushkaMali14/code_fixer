@@ -1,56 +1,158 @@
-# Code Fixers - Intelligent Code Analyzer
+# 🔧 Code Fixers — Intelligent Code Analyzer
 
---------------------------------------------------
-## 🔗 Project Link
-https://github.com/AnushkaMali14/code_fixer
+> An intelligent code analysis platform that helps developers understand coding errors, identify their root causes, and generate optimized solutions.
 
---------------------------------------------------
-## 📌 Project Description
-Code Fixers is an AI-powered code analysis platform designed to detect complex logical errors in source code. It goes beyond simple syntax checking by simulating code execution paths to identify loop accumulation bugs, uninitialized variables, and unsafe array mappings. The project's main purpose is to help developers write safer, more optimized code by providing both an intelligent root-cause analysis and a ready-to-use optimized fix.
+## 🌐 Live Demo
 
---------------------------------------------------
-## 📅 Project Details
-- Training/Development Date: April 22, 2026
-- Version: 1.0.0
-- Status: Completed
+🚀 **[Try Code Fixers](https://code-fixer-self.vercel.app/)**
 
---------------------------------------------------
-## 🗄️ Database Used
-- Database Name: MongoDB
-- Purpose: Used for persistent storage of error analysis logs, user statistics, and training metadata to enhance the simulation engine's detection accuracy over time.
+📂 **[View Source Code](https://github.com/AnushkaMali14/code_fixer)**
 
---------------------------------------------------
-## 🚀 Features
-- **Sequential Multi-Issue Synthesis**: Detects and fixes multiple errors (loops, safe maps, division guards) in a single pass.
-- **Single Source of Truth Diagnostics**: Transparent diagnostic reports showing Meaning, Root Cause, and Recommendations for every issue.
-- **Hybrid Scroll Layout**: A sleek, modern UI with independent scroll regions for long code blocks and global document-level scroll symmetry.
-- **Intelligent Fallbacks**: Robust data handling that ensures helpful recommendations are visible even for edge-case errors.
-- **Context-Aware Fixes**: Generates optimized code snippets that maintain original logic while ensuring mathematical and structural safety.
+---
 
---------------------------------------------------
-## 🛠 Tech Stack
-- **Frontend**: React.js, Tailwind CSS, Framer Motion, Lucide React
-- **Backend**: Node.js, Express.js
-- **Database**: MongoDB (via Mongoose)
-- **Styling**: Modern CSS with utility-first Tailwind architecture
+## 📌 About the Project
 
---------------------------------------------------
-## 🔗 GitHub Repository
-https://github.com/AnushkaMali14/code_fixer
+**Code Fixers** is a web-based intelligent code analysis platform designed to help developers understand and resolve coding errors.
 
---------------------------------------------------
-## ▶️ Setup Instructions
+Instead of simply identifying an error, the platform provides:
 
-### Backend Setup
-1. `cd backend`
-2. `npm install`
-3. `npm start` 
+* 🔍 **Meaning of the error**
+* 🧠 **Root cause analysis**
+* 💡 **Recommended solution**
+* 🛠️ **Optimized/fixed code**
 
-### Frontend Setup
-1. `cd frontend`
-2. `npm install`
-3. `npm run dev` 
+The system can analyze multiple issues in a single piece of code and provide structured recommendations while preserving the original programming logic.
 
---------------------------------------------------
-## 📌 License
-© 2026 Code Fixers. All rights reserved.
+---
+
+## 🎯 Problem Statement
+
+Developers, especially beginners, often understand that their code has an error but struggle to understand **why the error occurred and how to fix it correctly**.
+
+Traditional error messages usually provide limited information.
+
+**Code Fixers aims to bridge this gap by converting technical errors into clear, actionable explanations and solutions.**
+
+---
+
+## 🚀 Key Features
+
+### 🔍 Intelligent Error Detection
+
+Identifies common logical and runtime issues such as:
+
+* Type errors
+* Division by zero
+* Infinite loops
+* Incorrect variable usage
+* Unsafe array operations
+
+### 🧩 Multi-Issue Analysis
+
+Detects multiple problems within the same code instead of stopping at the first detected issue.
+
+### 🧠 Root Cause Analysis
+
+Provides a structured explanation containing:
+
+**Meaning → Root Cause → Solution → Fixed Code**
+
+### 🛠️ Optimized Code Suggestions
+
+Generates improved code while maintaining the original logic and improving safety.
+
+### 💻 Developer-Friendly Interface
+
+Modern interface designed to make error analysis simple and easy to understand.
+
+### 📊 Persistent Data
+
+MongoDB is used to store analysis-related information and application data.
+
+---
+
+## 🛠️ Tech Stack
+
+| Category    | Technologies                |
+| ----------- | --------------------------- |
+| Frontend    | React.js, Tailwind CSS      |
+| Backend     | Node.js, Express.js         |
+| Database    | MongoDB, Mongoose           |
+| UI/UX       | Framer Motion, Lucide React |
+| Development | Vite, JavaScript            |
+| Deployment  | Vercel                      |
+
+---
+
+## 🏗️ Project Structure
+
+```text
+code_fixer/
+│
+├── frontend/       # React frontend
+│
+├── backend/        # Node.js + Express backend
+│
+└── README.md       # Project documentation
+```
+
+---
+
+## ⚙️ Getting Started
+
+### 1. Clone the repository
+
+```bash
+git clone https://github.com/AnushkaMali14/code_fixer.git
+cd code_fixer
+```
+
+### 2. Backend Setup
+
+```bash
+cd backend
+npm install
+npm start
+```
+
+### 3. Frontend Setup
+
+Open another terminal:
+
+```bash
+cd frontend
+npm install
+npm run dev
+```
+
+The application will then be available through the local development URL provided by Vite.
+
+---
+
+## 📸 Screenshots
+
+*Add screenshots of the main dashboard, code input screen, and error analysis results here.*
+
+---
+
+## 📈 Future Improvements
+
+* 🤖 Integration with advanced AI/LLM-based code analysis
+* 🌐 Support for additional programming languages
+* 📊 Detailed user analytics and coding statistics
+* 🔐 User authentication and personalized history
+* ⚡ More advanced static and dynamic code analysis
+
+---
+
+## 👩‍💻 Developer
+
+**Anushka Mali**
+
+Computer Engineering Student | Aspiring Software Developer
+
+Interested in **Software Development, Web Development, DSA, AI and Cybersecurity**.
+
+---
+
+⭐ If you find this project useful, consider giving the repository a star!
